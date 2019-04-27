@@ -120,7 +120,7 @@ yarn install @lxjx/rc-config2router
   [
     // 每一个RouteItem都可以具有以下基本字段
     {
-      path: *\<str>,   // 匹配路径
+      path: *<str\>,   // 匹配路径
       component: *\<React.Component>,  // path匹配时用于渲染的组件
       redirect: \<str>,  // 重定向到的路由
       meta: \<obj>,   // 传递给被匹配组件的元数据
