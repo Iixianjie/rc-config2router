@@ -1,6 +1,6 @@
 {
   "name": "@lxjx/rc-config2router",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react configuration router",
   "main": "index.js",
   "author": "lxj <1073830130@qq.com>",
