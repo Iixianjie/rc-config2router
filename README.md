@@ -91,7 +91,8 @@ function App(props) {
 
 
 
-<br>
+<br>  
+
 ## Installation
 
 ```
@@ -119,8 +120,8 @@ yarn install @lxjx/rc-config2router
   [
     // 每一个RouteItem都可以具有以下基本字段
     {
-      path: \*\<str>,   // 匹配路径
-      component: \*\<React.Component>,  // path匹配时用于渲染的组件
+      path: *\<str>,   // 匹配路径
+      component: *\<React.Component>,  // path匹配时用于渲染的组件
       redirect: \<str>,  // 重定向到的路由
       meta: \<obj>,   // 传递给被匹配组件的元数据
       wraper: \<arr>,   // 用于回作为包装组件包裹component属性指向的路由，有多个项时验证顺序为从左到右
