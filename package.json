@@ -1,8 +1,13 @@
 {
   "name": "@lxjx/rc-config2router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react configuration router",
   "main": "index.js",
   "author": "lxj <1073830130@qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react-router-dom": "^5.0.0"
+  }
 }

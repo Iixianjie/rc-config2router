@@ -7,24 +7,16 @@
 ## Features
 * 使用配置式路由的方式生成路由rr5路由
 * 基于rr5，所以使用体验与rr5基本一致
-* 继承了权限、routeChange等实用功能
+* 添加了权限、routeChange等实用功能
 
 <br>
 
 ## Example
+
+[查看演示dome](https://stackblitz.com/edit/rc-router-test?file=index.js)  
+
 ```js
 // 配置
-import Test1 from './components/Test1';
-import Test1_1 from './components/Test1_1';
-import Test1_2 from './components/Test1_2';
-import Test2 from './components/Test2';
-import Test3 from './components/Test3';
-import Test4 from './components/Test4';
-import NotFound from './components/NotFound';
-import Auth from './components/Auth';
-import Auth2 from './components/Auth2';
-import Layout from './components/layout';
-
 export const routes = [
   {
     path: '/',
@@ -32,45 +24,45 @@ export const routes = [
     children: [
       {
         path: '/',
-        redirect: '/test1',
+        redirect: '/Home',
       },
       {
-        path: '/test1',
-        component: Test1,
+        path: '/Home',
+        component: Home,
         children: [
           {
-            path: '/test1',
-            redirect: '/test1/Test1_1',
+            path: '/Home',
+            redirect: '/Home/List',
           },
           {
-            path: '/test1/Test1_1',
-            component: Test1_1,
+            path: '/Home/List',
+            component: HomeList,
             meta: {
-              title: 'Test1_1',
+              title: '首页-详情',
             },
           },
           {
-            path: '/test1/Test1_2',
-            component: Test1_2,
+            path: '/Home/Desc',
+            component: HomeDesc,
             meta: {
-              title: 'Test1_2',
+              title: '首页-列表',
             },
           },
         ],
       },
       {
-        path: '/test2',
-        component: Test2,
+        path: '/About',
+        component: About,
         meta: {
-          title: 'test2',
+          title: '关于',
         },
       },
       {
-        path: '/test3',
-        component: Test3,
-        wraper: [Auth, Auth2],  // 使用数组中的组件进行包裹验证，验证顺序为从左到右
+        path: '/PrivatePage',
+        component: PrivatePage,
+        wraper: [Auth1, Auth2],  // 权限验证顺序为从左到右
         meta: {
-          title: 'test3',
+          title: '权限路由',
         },
       },
       {
@@ -84,7 +76,7 @@ export const routes = [
 ];
 
 // app.js
-import RcRouterView, { hashHistory, history } from './packages/index';
+import RcRouterView, { hashHistory, history } from '@lxjx/rc-config2router';
 
 function handleRouterChange(route) {
   document.title = route.meta.title || 'app title';
@@ -112,4 +104,39 @@ yarn install @lxjx/rc-config2router
 
 
 <br>
+
+## Api
+### RcRouterView  
+\<React.Component>
+
+<br>
+
+#### routerConfig
+\<arr>
+路由配置,格式为  
+
+```js
+  [
+    // 每一个RouteItem都可以具有以下基本字段
+    {
+      path: \*\<str>,   // 匹配路径
+      component: \*\<React.Component>,  // path匹配时用于渲染的组件
+      redirect: \<str>,  // 重定向到的路由
+      meta: \<obj>,   // 传递给被匹配组件的元数据
+      wraper: \<arr>,   // 用于回作为包装组件包裹component属性指向的路由，有多个项时验证顺序为从左到右
+      children: \<arr[RouteItem]>    // 路由项
+    }
+  ]
+```
+
+#### history  
+\<history.history() | history.hashHistory()>  
+用于设置路由类型，只能传入包中导出的`{ hashHistory, history } from '@lxjx/rc-config2router'`  
+
+
+<br>
+
+#### onRouterChange
+\<fn>  
+路由改变时触发, 当前的路由匹配项回作为参数传入。
 
