@@ -1,5 +1,5 @@
 # rc-config2router
-## introduce
+## Introduce
 配置式react-router
 
 <br>
