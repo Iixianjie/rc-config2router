@@ -13,7 +13,7 @@
 
 ## Example
 
-[查看演示dome](https://stackblitz.com/edit/rc-router-test?file=index.js)  
+[查看演示dome](https://stackblitz.com/edit/rc-config2router)  
 
 ```js
 // 配置
