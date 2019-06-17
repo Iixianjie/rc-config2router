@@ -1053,7 +1053,10 @@ function createRouteItems(_ref, index, options) {
     meta: meta,
     key: index
   }, RouteProps, {
-    render: function render(props) {
+    render: function render(_ref2) {
+      var _children = _ref2.children,
+          props = _objectWithoutProperties(_ref2, ["children"]);
+
       // 触发自定义路由change事件，传入原信息与props
       options.onRouterChange && options.onRouterChange(_objectSpread({
         meta: meta || {}
@@ -1071,9 +1074,12 @@ function createRouteItems(_ref, index, options) {
           return Wraped;
         }
 
+        if (children) {
+          props.children = React.createElement(reactRouterDom.Switch, null, childRoutes);
+        }
+
         return React.createElement(Component, _extends$1({}, props, {
-          meta: meta,
-          children: React.createElement(reactRouterDom.Switch, null, childRoutes)
+          meta: meta
         }));
       }
 

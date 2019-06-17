@@ -1,6 +1,6 @@
 {
   "name": "@lxjx/rc-config2router",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "react configuration router",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -13,16 +13,13 @@
     "dev": "umi-lib doc dev",
     "build": "umi-lib build"
   },
-  "peerDependencies": {
+  "dependencies": {
     "lodash": "*",
     "prop-types": "*",
     "react": "*",
     "react-router-dom": "*"
   },
   "devDependencies": {
-    "lodash": "^4.17.11",
-    "prop-types": "^15.7.2",
-    "react-router-dom": "^5.0.1",
     "umi-library": "^1.1.1"
   },
   "license": "MIT"

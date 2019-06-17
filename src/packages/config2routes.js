@@ -30,14 +30,14 @@ export function createRouteItems({ meta, component: Component, wraper, redirect,
   return (
     redirect ?
       <Redirect exact key={index} from={RouteProps.path} to={redirect} /> :
-      <Route meta={meta} key={index} {...RouteProps} render={(props) => {
+      <Route meta={meta} key={index} {...RouteProps} render={({children: _children, ...props}) => {
         // 触发自定义路由change事件，传入原信息与props
         options.onRouterChange && options.onRouterChange({ meta: meta || {}, ...props });
 
         if (Component) {
           if (wraper && Array.isArray(wraper)) {
             // wrap顺序是由内到外的，所有调整为符合常识的顺序
-            let _wraper = wraper.slice().reverse();;
+            let _wraper = wraper.slice().reverse();
             let Wraped = _wraper.reduce((PrevComponent, NowComponent) => {
               return (
                 <NowComponent>
@@ -49,7 +49,11 @@ export function createRouteItems({ meta, component: Component, wraper, redirect,
             return Wraped;
           }
 
-          return <Component {...props} meta={meta} children={<Switch>{childRoutes}</Switch>} />;
+          if(children) {
+            props.children = <Switch>{childRoutes}</Switch>;
+          }
+
+          return <Component {...props} meta={meta}></Component>;
         }
 
         return null;
